@@ -23,7 +23,8 @@ The abstracted APIs would be accessible via [Swagger-ui].
 This system provides a request tracing facility by adding a trace-id to the logs for all the requests.
 It also implements AOP based logging to logs control-flow-statements for Controller, Service and DAO classes, when set at debug level. This property is available in application.yml
 
- 
+### Resilience
+Implemented [Hystrix] to bring in the capability of Circuit Breaker. Could be utilized further for future use-cases.
 
    [SpockFramework]: <http://spockframework.org/>
    [Swagger-ui]: <https://swagger.io/tools/swagger-ui/>
@@ -31,3 +32,4 @@ It also implements AOP based logging to logs control-flow-statements for Control
    [Vault by HashiCorp]: <https://www.vaultproject.io/>
    [Spring Cloud Config Server]: <https://cloud.spring.io/spring-cloud-config/multi/multi__spring_cloud_config_server.html>
    [Consul]: <https://www.consul.io/>
+   [Hystrix]: <https://github.com/Netflix/Hystrix/wiki/How-it-Works>
