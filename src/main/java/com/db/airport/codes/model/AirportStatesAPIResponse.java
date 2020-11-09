@@ -1,22 +1,18 @@
 
 package com.db.airport.codes.model;
 
+import com.fasterxml.jackson.annotation.*;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "status",
-    "statusCode",
-    "district_type",
-    "states"
+        "status",
+        "statusCode",
+        "district_type",
+        "states"
 })
 public class AirportStatesAPIResponse {
 
@@ -30,6 +26,12 @@ public class AirportStatesAPIResponse {
     private List<State> states = null;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<>();
+
+    @JsonProperty("term")
+    private String term;
+
+    @JsonProperty("message")
+    private String message;
 
     @JsonProperty("status")
     public Boolean getStatus() {
@@ -69,6 +71,26 @@ public class AirportStatesAPIResponse {
     @JsonProperty("states")
     public void setStates(List<State> states) {
         this.states = states;
+    }
+
+    @JsonProperty("message")
+    public String getMessage() {
+        return message;
+    }
+
+    @JsonProperty("message")
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    @JsonProperty("term")
+    public String getTerm() {
+        return term;
+    }
+
+    @JsonProperty("term")
+    public void setTerm(String term) {
+        this.term = term;
     }
 
     @JsonAnyGetter

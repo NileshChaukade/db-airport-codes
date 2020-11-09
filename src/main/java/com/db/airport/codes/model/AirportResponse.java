@@ -9,10 +9,10 @@ import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "status",
-    "statusCode",
-    "district_type",
-    "states"
+        "status",
+        "statusCode",
+        "district_type",
+        "states"
 })
 public class AirportResponse {
 
@@ -26,6 +26,10 @@ public class AirportResponse {
     private List<State> states = null;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<>();
+    @JsonProperty("message")
+    private String message;
+    @JsonProperty("term")
+    private String term;
 
     @JsonProperty("status")
     public Boolean getStatus() {
@@ -65,6 +69,26 @@ public class AirportResponse {
     @JsonProperty("states")
     public void setStates(List<State> states) {
         this.states = states;
+    }
+
+    @JsonProperty("message")
+    public String getMessage() {
+        return message;
+    }
+
+    @JsonProperty("message")
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    @JsonProperty("term")
+    public String getTerm() {
+        return term;
+    }
+
+    @JsonProperty("term")
+    public void setTerm(String term) {
+        this.term = term;
     }
 
     @JsonAnyGetter
