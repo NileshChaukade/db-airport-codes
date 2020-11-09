@@ -1,0 +1,28 @@
+{
+  "airport": {
+    "name": "London - All Airports",
+    "city": "London",
+    "iata": "LON",
+    "full_location": "London, London, United Kingdom",
+    "type": "group",
+    "latitude": "51.507351",
+    "longitude": "-0.127758",
+    "elevation": "65",
+    "website": null,
+    "country": {
+      "name": "United Kingdom",
+      "iso": "GB"
+    },
+    "state": {
+      "name": "London",
+      "type": "County"
+    },
+    "continent": {
+      "abbr": "EU",
+      "name": "Europe"
+    }
+  },
+  "term": "LON",
+  "status": true,
+  "statusCode": 200
+}
