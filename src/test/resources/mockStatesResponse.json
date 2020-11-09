@@ -1,0 +1,151 @@
+{
+  "status": true,
+  "statusCode": 200,
+  "district_type": "State",
+  "states": [
+    {
+      "abbr": "AN",
+      "name": "Andaman and Nicobar Islands"
+    },
+    {
+      "abbr": "AP",
+      "name": "Andhra Pradesh"
+    },
+    {
+      "abbr": "AR",
+      "name": "Arunachal Pradesh"
+    },
+    {
+      "abbr": "AS",
+      "name": "Assam"
+    },
+    {
+      "abbr": "BR",
+      "name": "Bihar"
+    },
+    {
+      "abbr": "CH",
+      "name": "Chandigarh"
+    },
+    {
+      "abbr": "CT",
+      "name": "Chhattisgarh"
+    },
+    {
+      "abbr": "DN",
+      "name": "Dadra and Nagar Haveli"
+    },
+    {
+      "abbr": "DD",
+      "name": "Daman and Diu"
+    },
+    {
+      "abbr": "GA",
+      "name": "Goa"
+    },
+    {
+      "abbr": "GJ",
+      "name": "Gujarat"
+    },
+    {
+      "abbr": "HR",
+      "name": "Haryana"
+    },
+    {
+      "abbr": "HP",
+      "name": "Himachal Pradesh"
+    },
+    {
+      "abbr": "JK",
+      "name": "Jammu and Kashmir"
+    },
+    {
+      "abbr": "JH",
+      "name": "Jharkhand"
+    },
+    {
+      "abbr": "KA",
+      "name": "Karnataka"
+    },
+    {
+      "abbr": "KL",
+      "name": "Kerala"
+    },
+    {
+      "abbr": "LD",
+      "name": "Lakshadweep"
+    },
+    {
+      "abbr": "MP",
+      "name": "Madhya Pradesh"
+    },
+    {
+      "abbr": "MH",
+      "name": "Maharashtra"
+    },
+    {
+      "abbr": "MN",
+      "name": "Manipur"
+    },
+    {
+      "abbr": "ML",
+      "name": "Meghalaya"
+    },
+    {
+      "abbr": "MZ",
+      "name": "Mizoram"
+    },
+    {
+      "abbr": "NL",
+      "name": "Nagaland"
+    },
+    {
+      "abbr": "DL",
+      "name": "National Capital Territory of Delhi"
+    },
+    {
+      "abbr": "OR",
+      "name": "Odisha"
+    },
+    {
+      "abbr": "PY",
+      "name": "Puducherry"
+    },
+    {
+      "abbr": "PB",
+      "name": "Punjab"
+    },
+    {
+      "abbr": "RJ",
+      "name": "Rajasthan"
+    },
+    {
+      "abbr": "SK",
+      "name": "Sikkim"
+    },
+    {
+      "abbr": "TN",
+      "name": "Tamil Nadu"
+    },
+    {
+      "abbr": "TG",
+      "name": "Telangana"
+    },
+    {
+      "abbr": "TR",
+      "name": "Tripura"
+    },
+    {
+      "abbr": "UP",
+      "name": "Uttar Pradesh"
+    },
+    {
+      "abbr": "UT",
+      "name": "Uttarakhand"
+    },
+    {
+      "abbr": "WB",
+      "name": "West Bengal"
+    }
+  ]
+}

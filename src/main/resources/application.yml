@@ -13,3 +13,6 @@ application:
 
 server:
   port: 80
+#  error:
+#    whitelabel:
+#      enabled: false

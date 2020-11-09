@@ -1,0 +1,15 @@
+spring:
+    application:
+        name: airport-codes-proxy
+        log-level: debug
+application:
+    airport-codes:
+        auth-key: 0c1d337658
+        auth-secret: 919f452c8801781
+        server-url: https://www.air-port-codes.com/
+        single: api/v1/single
+        countries: api/v1/countries
+        states: api/v1/states
+
+server:
+    port: 80

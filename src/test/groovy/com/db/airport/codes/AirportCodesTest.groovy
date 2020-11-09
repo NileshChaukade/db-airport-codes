@@ -1,14 +1,13 @@
 package com.db.airport.codes
 
-import com.db.airport.codes.model.AirportResponse
-import com.db.airport.codes.service.AirportCodesService
 import com.db.airport.codes.dao.AirportCodesDAO
-import com.fasterxml.jackson.core.type.TypeReference
+import com.db.airport.codes.model.AirportCountriesAPIResponse
+import com.db.airport.codes.model.AirportResponse
+import com.db.airport.codes.model.AirportStatesAPIResponse
+import com.db.airport.codes.service.AirportCodesService
 import com.fasterxml.jackson.databind.ObjectMapper
 import lombok.extern.slf4j.Slf4j
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.core.ParameterizedTypeReference
 import org.springframework.core.io.ClassPathResource
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -18,14 +17,13 @@ import spock.lang.Specification
 @Slf4j
 class AirportCodesTest extends Specification {
 
-    @Autowired
-    ParameterizedTypeReference<Map<String, Object>> genericTypeRef
-
     private AirportCodesService airportCodesService = new AirportCodesService()
 
     private AirportCodesDAO airportCodesDAO
 
     ResponseEntity<AirportResponse> mockSingleResponse, mockSingleResponse404
+    ResponseEntity<AirportStatesAPIResponse> mockStatesResponse, mockStatesResponse404
+    ResponseEntity<AirportCountriesAPIResponse> mockCountriesResponse
 
     def setup() {
         //log.info("Performing Setup");
@@ -34,6 +32,11 @@ class AirportCodesTest extends Specification {
         def objectMapper = new ObjectMapper()
         mockSingleResponse = new ResponseEntity<AirportResponse>(objectMapper.readValue(new ClassPathResource("mockSingleResponse.json").getURL(), AirportResponse.class), HttpStatus.OK)
         mockSingleResponse404 = new ResponseEntity<AirportResponse>(objectMapper.readValue(new ClassPathResource("mockSingleResponse_404.json").getURL(), AirportResponse.class), HttpStatus.OK)
+
+        mockStatesResponse = new ResponseEntity<AirportStatesAPIResponse>(objectMapper.readValue(new ClassPathResource("mockStatesResponse.json").getURL(), AirportStatesAPIResponse.class), HttpStatus.OK)
+        mockStatesResponse404 = new ResponseEntity<AirportStatesAPIResponse>(objectMapper.readValue(new ClassPathResource("mockStatesResponse_404.json").getURL(), AirportStatesAPIResponse.class), HttpStatus.OK)
+
+        mockCountriesResponse = new ResponseEntity<AirportCountriesAPIResponse>(objectMapper.readValue(new ClassPathResource("mockCountriesResponse.json").getURL(), AirportCountriesAPIResponse.class), HttpStatus.OK)
 
         airportCodesService.setAirportCodesDAO(airportCodesDAO)
 
@@ -65,6 +68,53 @@ class AirportCodesTest extends Specification {
         airportCodesService.getAirportDetails("LON")
         then:
         1 * airportCodesDAO.getAirportDetails("LON")
+    }
+
+
+    def "Positive States API test"() {
+        def result
+        given:
+        airportCodesDAO.getStates("IN") >> mockStatesResponse
+        when:
+        result = airportCodesService.getStates("IN")
+        then:
+        result == mockStatesResponse
+    }
+
+
+    def "Negative States API test"() {
+        def result
+        given:
+        airportCodesDAO.getStates("IN") >> mockStatesResponse404
+        when:
+        result = airportCodesService.getStates("IN")
+        then:
+        result == mockStatesResponse404
+    }
+
+    def "States API Number of times called"() {
+        when:
+        airportCodesService.getStates("IN")
+        then:
+        1 * airportCodesDAO.getStates("IN")
+    }
+
+
+    def "Positive Countries API test"() {
+        def result
+        given:
+        airportCodesDAO.getCountries("name") >> mockCountriesResponse
+        when:
+        result = airportCodesService.getCountries("name")
+        then:
+        result == mockCountriesResponse
+    }
+
+    def "Countries API Number of times called"() {
+        when:
+        airportCodesService.getCountries("name")
+        then:
+        1 * airportCodesDAO.getCountries("name")
     }
 
 }

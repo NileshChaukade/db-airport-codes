@@ -1,0 +1,5 @@
+{
+  "status": false,
+  "statusCode": 400,
+  "message": "Your request is missing the country abbreviation."
+}

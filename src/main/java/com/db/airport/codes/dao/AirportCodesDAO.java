@@ -1,7 +1,9 @@
 package com.db.airport.codes.dao;
 
 import com.db.airport.codes.AirportCodesConfig;
+import com.db.airport.codes.model.AirportCountriesAPIResponse;
 import com.db.airport.codes.model.AirportResponse;
+import com.db.airport.codes.model.AirportStatesAPIResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +49,21 @@ public class AirportCodesDAO {
         return restTemplate.exchange(builder.toUriString(), HttpMethod.GET, getRequestWithHeaders(), AirportResponse.class);
     }
 
+    public ResponseEntity<AirportStatesAPIResponse> getStates(String country) {
+
+        String statesURL = airportCodesConfig.getServerUrl() + airportCodesConfig.getStatesAPI();
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(statesURL).queryParam("country", country);
+
+        return  restTemplate.exchange(builder.toUriString(), HttpMethod.GET, getRequestWithHeaders(), AirportStatesAPIResponse.class);
+    }
+
+    public ResponseEntity<AirportCountriesAPIResponse> getCountries(String fieldName) {
+
+        String countriesURL = airportCodesConfig.getServerUrl() + airportCodesConfig.getCountriesAPI();
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(countriesURL).queryParam("field_name", fieldName);
+
+        return restTemplate.exchange(builder.toUriString(), HttpMethod.GET, getRequestWithHeaders(), AirportCountriesAPIResponse.class);
+    }
     private HttpEntity getRequestWithHeaders() { // NOSONAR
         log.debug("Adding trace-id to out-going requests");
         airportCodesRequestHeaders.add(TRACE_ID_KEY, MDC.get(TRACE_ID_KEY));
