@@ -22,7 +22,7 @@ class AirportCodesTest extends Specification {
     private AirportCodesDAO airportCodesDAO
 
     ResponseEntity<AirportResponse> mockSingleResponse, mockSingleResponse404
-    ResponseEntity<AirportStatesAPIResponse> mockStatesResponse, mockStatesResponse404
+    ResponseEntity<AirportStatesAPIResponse> mockStatesResponse, mockFakeCountryStatesResponse, mockStatesResponse404
     ResponseEntity<AirportCountriesAPIResponse> mockCountriesResponse
 
     def setup() {
@@ -34,6 +34,7 @@ class AirportCodesTest extends Specification {
         mockSingleResponse404 = new ResponseEntity<AirportResponse>(objectMapper.readValue(new ClassPathResource("mockSingleResponse_404.json").getURL(), AirportResponse.class), HttpStatus.OK)
 
         mockStatesResponse = new ResponseEntity<AirportStatesAPIResponse>(objectMapper.readValue(new ClassPathResource("mockStatesResponse.json").getURL(), AirportStatesAPIResponse.class), HttpStatus.OK)
+        mockFakeCountryStatesResponse = new ResponseEntity<AirportStatesAPIResponse>(objectMapper.readValue(new ClassPathResource("mockStatesFakeCountryResponse.json").getURL(), AirportStatesAPIResponse.class), HttpStatus.OK)
         mockStatesResponse404 = new ResponseEntity<AirportStatesAPIResponse>(objectMapper.readValue(new ClassPathResource("mockStatesResponse_404.json").getURL(), AirportStatesAPIResponse.class), HttpStatus.OK)
 
         mockCountriesResponse = new ResponseEntity<AirportCountriesAPIResponse>(objectMapper.readValue(new ClassPathResource("mockCountriesResponse.json").getURL(), AirportCountriesAPIResponse.class), HttpStatus.OK)
@@ -81,6 +82,15 @@ class AirportCodesTest extends Specification {
         result == mockStatesResponse
     }
 
+    def "Fake Country States API test"() {
+        def result
+        given:
+        airportCodesDAO.getStates("xx") >> mockFakeCountryStatesResponse
+        when:
+        result = airportCodesService.getStates("xx")
+        then:
+        result == mockFakeCountryStatesResponse
+    }
 
     def "Negative States API test"() {
         def result
